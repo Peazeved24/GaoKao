@@ -1,0 +1,63 @@
+    ja deu ...
+
+atoi base:
+1. Ignora espaços no início
+2. Trata sinais + ou -
+3. Para cada char:
+     a) Verifica se é válido na base
+     b) Converte para valor numérico
+     c) acumula: result = result * base + valor
+4. Retorna result * sinal
+-----------------------------------------------------------
+
+split:
+1. Conta quantas palavras -> aloca array de ponteiros
+2. Para cada palavra:
+    a) Ignora separadores
+    b) Marca start da palavra
+    c) Conta tamanho até próximo separador
+    d) Aloca espaço e copia chars
+3. Coloca NULL no final do array
+
+------------------------------------------------------------
+flood_fill: (V)
+    target = tab[begin]
+
+    função recursiva:
+        se fora → return
+        se != target → return
+        marcar
+        chamar 4 direções
+
+
+------------------------------------------------------------
+ft_list_remove_if
+
+1. Remover da cabeça:
+   while(head != NULL && cmp(head->data, ref)):
+       temp = head
+       head = head->next
+       free(temp->data)
+       free(temp)
+
+2. Remover o resto:
+   prev = head
+   cur = head->next
+   while(cur):
+       if cmp(cur->data, ref):
+           prev->next = cur->next
+           free(cur->data)
+           free(cur)
+           cur = prev->next
+       else:
+           prev = cur
+           cur = cur->next
+------------------------------------------------------------
+
+5️⃣ rev_wstr (reverse words)
+    Objetivo: inverter a ordem das palavras na string.
+1. Ignorar espaços iniciais
+2. Para cada palavra do fim para o início:
+    a) Encontrar começo e fim da palavra
+    b) Escrever no output
+    c) Separar com espaço
