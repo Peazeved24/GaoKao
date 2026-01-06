@@ -1,0 +1,232 @@
+flood_fill ⭐⭐⭐
+rev_wstr ⭐⭐⭐
+add_prime_sum ⭐⭐
+print_hex ⭐⭐
+sort_list ⭐⭐
+lcm ⭐
+wdmatch ⭐⭐⭐
+inter ⭐⭐⭐
+union ⭐⭐⭐
+alpha_mirror ⭐⭐
+camel_to_snake ⭐⭐
+snake_to_camel ⭐⭐
+repeat_alpha ⭐⭐
+
+saber fazer isto !!!
+    - antes do 25.
+------------------------------------------
+1️⃣ wdmatch
+
+Assignment name: wdmatch
+Expected files: wdmatch.c
+
+Escreve um programa que receba duas strings como argumentos.
+
+👉 Se todos os caracteres da primeira string aparecem na segunda string, na mesma ordem, imprime a primeira string.
+Caso contrário, imprime apenas uma newline.
+
+Não podes reordenar caracteres.
+
+Cada carácter da segunda string só pode ser usado uma vez.
+
+Caso número errado de argumentos → imprime apenas \n.
+
+Exemplo
+
+./wdmatch "abc" "aaabbbccc" → abc
+./wdmatch "abc" "acb" → (nada)
+------------------------------------------
+2️⃣ inter
+
+Assignment name: inter
+
+Recebe duas strings.
+
+Imprime os caracteres que aparecem nas duas strings,
+
+na ordem da primeira string
+
+sem duplicados
+
+Exemplo
+
+./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" → padinto
+
+------------------------------------------
+3️⃣ union
+
+Assignment name: union
+
+Recebe duas strings.
+
+Imprime:
+
+todos os caracteres da primeira string
+
+depois os da segunda
+
+sem repetir nenhum carácter
+
+mantendo a ordem de aparição
+
+Exemplo
+
+./union "zpadinton" "paqefwtdjetyiytjneytjoeyjnejeyj" → zpadintoqefwtyjn
+
+------------------------------------------
+4️⃣ alpha_mirror
+
+Assignment name: alpha_mirror
+
+Recebe uma string.
+
+Troca cada letra pela sua posição espelhada no alfabeto:
+
+a ↔ z
+
+b ↔ y
+
+A ↔ Z
+
+Caracteres não alfabéticos ficam iguais.
+
+Exemplo
+
+abc → zyx
+My horse → Nb slihv
+------------------------------------------
+5️⃣ camel_to_snake
+
+Assignment name: camel_to_snake
+
+Recebe uma string em camelCase.
+
+Transforma em snake_case:
+
+cada letra maiúscula vira _ + minúscula
+
+Exemplo
+
+camelCase → camel_case
+------------------------------------------
+snake_to_camel
+
+Assignment name: snake_to_camel
+
+Recebe uma string em snake_case.
+
+Transforma em camelCase:
+
+remove _
+
+próxima letra fica maiúscula
+
+Exemplo
+
+snake_case → snakeCase
+------------------------------------------
+7️⃣ repeat_alpha
+
+Assignment name: repeat_alpha
+
+Recebe uma string.
+
+Cada letra deve ser repetida de acordo com a sua posição no alfabeto:
+
+a → 1 vez
+
+b → 2 vezes
+
+A → 1 vez
+
+Z → 26 vezes
+
+Exemplo
+
+abc → abbccc
+------------------------------------------
+8️⃣ flood_fill
+
+Assignment name: flood_fill
+
+Implementa a função:
+
+void flood_fill(char **tab, t_point size, t_point begin);
+
+
+A função deve preencher uma área contígua a partir de begin,
+substituindo todos os caracteres iguais ao inicial.
+
+Usa recursão ou stack.
+------------------------------------------
+9️⃣ rev_wstr
+
+Assignment name: rev_wstr
+
+Recebe uma string.
+
+Imprime as palavras em ordem inversa, separadas por um espaço.
+
+Palavra = sequência de caracteres não-espaço
+
+Ignorar múltiplos espaços
+
+Exemplo
+
+"hello world 42" → "42 world hello"
+------------------------------------------
+🔟 add_prime_sum
+
+Assignment name: add_prime_sum
+
+Recebe um número.
+
+Soma todos os números primos de 2 até esse número (inclusive).
+
+Se argumento inválido → imprime 0
+
+Usa apenas funções básicas
+
+Exemplo
+
+./add_prime_sum 10 → 17
+
+
+(2 + 3 + 5 + 7)
+------------------------------------------
+1️⃣1️⃣ print_hex
+
+Assignment name: print_hex
+
+Recebe um número decimal.
+
+Imprime esse número em hexadecimal minúsculo, seguido de \n.
+
+Exemplo
+
+./print_hex 255 → ff
+------------------------------------------
+1️⃣2️⃣ sort_list
+
+Assignment name: sort_list
+
+Implementa:
+
+t_list *sort_list(t_list *lst, int (*cmp)(int, int));
+
+
+Ordena a lista usando a função de comparação.
+------------------------------------------
+1️⃣3️⃣ lcm
+
+Assignment name: lcm
+
+Implementa:
+
+unsigned int lcm(unsigned int a, unsigned int b);
+
+
+Retorna o mínimo múltiplo comum.
+
+Se a == 0 ou b == 0 → retorna 0
+------------------------------------------
