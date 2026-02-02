@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:26 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/29 19:14:33 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/01/31 19:33:54 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ int ft_linew(char *fd_name); // futur0 pasing...
 int ft_alocmap(t_map *map); // cria a matriz
 int ft_fillmap(t_map *map, char *file_name); // prenche ela.
 void ft_printmap(t_map *map); // debug
-void ft_freempa(t_map *map); 
+void ft_freemap(t_map *map); 
 //-----------------------------
-int ft_mapcheck(t_map *map); //retangulo?
-int ft_bodercheck(t_map *map); // validar bordas.
+//GRID_PARSE
+int ft_map_check(t_map *map);
+int ft_border_check_extreme(t_map *map);
+int ft_boder_check(t_map *map);
+int ft_grid_parse(t_map *map);
+
 #endif

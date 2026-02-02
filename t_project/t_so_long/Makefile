@@ -1,7 +1,7 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS=  gnl.c gnlutils.c main.c src_fd.c src_map.c src_map2.c
+SRCS=  gnl.c gnlutils.c main.c src_fd.c src_map.c src_grid.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

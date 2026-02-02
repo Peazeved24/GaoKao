@@ -6,23 +6,11 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 18:21:20 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/29 18:10:12 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/01/31 18:54:20 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s.h"
-
-int ft_linew(char *line)
-{
-    int i = 0;
-    if(!line)
-        return (0);
-    while(line[i] && line[i] != '\n')
-    {
-        i++;
-    }
-    return i;
-}
 
 int ft_alocmap(t_map *map)
 {
@@ -64,7 +52,7 @@ void ft_printmap(t_map *map)
         i++;
     }    
 }
-void ft_freempa(t_map *map)
+void ft_freemap(t_map *map)
 {
     int i = 0;
     
@@ -74,4 +62,5 @@ void ft_freempa(t_map *map)
         i++;
     }
     free(map->grid);
+    map->grid= NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:21 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/30 20:27:29 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/01/31 18:52:38 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ int main(int ac, char **av)
     if(ft_fdpars(av[1], &map) || ft_alocmap(&map)|| ft_fillmap(&map, av[1]))
     {
         printf("Error\n");
+        ft_freemap(&map);
         return 0;
     }
-    if(ft_mapcheck(&map) || ft_bodercheck(&map))
+    if(ft_grid_parse(&map))
     {
         printf("Error\n");
+        ft_freemap(&map);
         return 0;
     }
     else
         ft_printmap(&map);
-    ft_freempa(&map);
+    ft_freemap(&map);
     return 0;
 }

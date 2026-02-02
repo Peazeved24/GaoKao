@@ -34,8 +34,8 @@ ROAD MAP:
                 -> int ft_alocmpa(t_map *map); --> alocar o mapa ja na memoria;
                 -> fdpars ... abre o fd ->entede o numero (recebe o ficheiro + struct)
         
-nova main:
-        -> modularizada :v)
+## MAIN 1:
+        (modularizada :v)
 
 int main(int ac, char **av)
 {
@@ -52,6 +52,7 @@ int main(int ac, char **av)
     }
     return 0;
 }
+## MAIN MODULAR
 
 
         -> criacao da funcao -> ft_fillmap
@@ -65,7 +66,7 @@ int main(int ac, char **av)
         void ft_freempa(t_map *map); // free ... o mapa 
 
 
-main modular 2:
+## MAIN MODULAR 2:
 
 int main(int ac, char **av)
 {
@@ -84,6 +85,7 @@ int main(int ac, char **av)
     ft_freempa(&map);
     return 0;
 }
+## MAIN MODULAR 2/
   -----------------  -----------------  -----------------  -----------------  -----------------
 3 DIA:
 ja temos:        
@@ -139,9 +141,7 @@ int ft_bodercheck(t_map *map)
     }
     return 0;
 }
-
-
-main modular 3:
+## main modular 3:
 
 int main(int ac, char **av)
 {
@@ -166,3 +166,82 @@ int main(int ac, char **av)
     ft_freempa(&map);
     return 0;
 }
+## main modular 3/
+-----------------  -----------------  -----------------  -----------------  -----------------
+DAY 4:
+
+## -- resumo.
+map->grid[y][x]
+isto e o meu mapa;
+    -> y - sao as minhas linhas -> vertical -> de cima para baixo.
+    (H)
+    -> x  - as minhas colunas. ->  horizontal -> esq - dir.
+    (W)
+
+map->grind[0][x] -> minha primeira linha;
+map->grind[map->h-1][x] -> ultima linha
+map->grind[0][map->w-1] -> o meu ulimo digito da primeira linha.
+
+map->grind[y][0]-> minha primeira coluna.
+map->grind[y][map->w-1] -> minha ultima coluna.
+mao->grind[map->h-1][0] = o meu ultimo digito da ultima linha.
+### resumo/
+
+    ->concluido:
+        -> pegar o mapa , ler as linhas , criar uma grind, dar fill no mapa.
+        -> pegar a grind filed, validar a grind:
+            -> ver se e um retangulo
+            -> ver parades -> 1 somente na primera / ultima linha
+                -> no comeco de cada linha (do meio-- apos a primeira , antes da ultima)
+                    -> ter 1 somente nos inicio e no fim.
+        -> fiz a minha flood fill ja para o dia a seguir.
+
+por questoes de tamanho de condicoes ...  1 funcao somente valida o processo todo.
+
+int ft_grid_parse(t_map *map)
+{
+    if(ft_map_check(map))
+        return 1;
+    if(ft_border_check_extreme(map))
+        return 1;
+    if(ft_boder_check(map))
+        return 1;
+    return 0;
+}
+## MAIN MODULAR 4:
+
+int main(int ac, char **av)
+{
+    if(ac == 1)
+    {
+        printf("error\n");
+        return 0;
+    }
+    t_map map; // inicializacao da var -> struct.
+    if(ft_fdpars(av[1], &map) || ft_alocmap(&map)|| ft_fillmap(&map, av[1]))
+    {
+        printf("Error\n");
+        ft_freemap(&map);
+        return 0;
+    }
+    if(ft_grid_parse(&map))
+    {
+        printf("Error\n");
+        ft_freemap(&map);
+        return 0;
+    }
+    else
+        ft_printmap(&map);
+    ft_freemap(&map);
+    return 0;
+}
+## MAIN MODULAR 4/
+
+-----------------  -----------------  -----------------  -----------------  -----------------
+
+# DAY 5:
+
+    -> criacao da FF.
+    -> criacao de uma funcao que copia o meu mapa -> sempre usar uma copia.
+    -> entender onde esta o P.
+    -> validar o processo todo --- para comecar a MLX.

@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   src_map2.c                                         :+:      :+:    :+:   */
+/*   src_grid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:56:44 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/29 19:37:10 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/01/31 18:54:25 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s.h"
 
-int ft_mapcheck(t_map *map) // as minhas vars. e o meu 
+int ft_linew(char *line)
 {
+    int i = 0;
+    if(!line)
+        return (0);
+    while(line[i] && line[i] != '\n')
+    {
+        i++;
+    }
+    return i;
+}
+int ft_map_check(t_map *map) // faltame ver o numero minimi... 3?/
+{
+    if (!map || !map->grid || !map->grid[0])
+        return (-1);
     map->w = ft_linew(map->grid[0]);
     int j = 0;
     
-    if (!map || !map->grid || !map->grid[0])
-        return (-1);
     while(map->grid[j])
     {
         if(map->w != ft_linew(map->grid[j]))
@@ -26,24 +37,24 @@ int ft_mapcheck(t_map *map) // as minhas vars. e o meu
         j++;
     }
     return 0;
-}// falta guardar largurra em map->w ...
+}
 
-int ft_bodercheck(t_map *map)
+int ft_border_check_extreme(t_map *map)
 {
-    int x = 0;
+
+    int x;
+    int y;
+
+    x = 0;
+    y = 0;
     while(x < map->w)
     {
         if(map->grid[0][x] != '1')
             return 1;
         x++;
     }
-    int x = 0;
-    while(map < map->w)
-    {
-        
-    }
     x = 0;
-    int y = map->h-1;
+    y = map->h-1;
     while(x < map->w)
     {
         if(map->grid[y][x] != '1')
@@ -52,12 +63,29 @@ int ft_bodercheck(t_map *map)
     }
     return 0;
 }
+int ft_boder_check(t_map *map)
+{
+    int x;
+    int y;
 
-/*
-1111111
-1000011
-10P0011
-1111111
+    x = 0;
+    y = 1;
+    while(y < map->h-1) // enquanto n chegar a minha ultina linha
+    {
+        if(map->grid[y][x] != '1' || map->grid[y][map->w-1] != '1')
+            return 1;
+        y++;
+    }
+    return 0;
+}
 
-*/
-
+int ft_grid_parse(t_map *map)
+{
+    if(ft_map_check(map))
+        return 1;
+    if(ft_border_check_extreme(map))
+        return 1;
+    if(ft_boder_check(map))
+        return 1;
+    return 0;
+}

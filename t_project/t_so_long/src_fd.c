@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 18:12:32 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/29 19:15:39 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/01/31 19:12:21 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_fdpars(char *file_name,t_map *map)
 {
-    map->h = ft_countlines_file(file_name); // MINHAS LINHAS.
+    map->h = ft_countlines_file(file_name);
     if(map->h <= 0)
         return (1);
     return 0;
