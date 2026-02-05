@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 18:21:20 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/31 18:54:20 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/05 16:41:25 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void ft_printmap(t_map *map)
     {
         printf("%s", map->grid[i]);
         i++;
-    }    
+    }
 }
 void ft_freemap(t_map *map)
 {
@@ -63,4 +63,16 @@ void ft_freemap(t_map *map)
     }
     free(map->grid);
     map->grid= NULL;
+}
+void ft_freemapcopy(char **c_map, int h)
+{
+    int i = 0;
+
+    while(i < h)
+    {
+        free(c_map[i]);
+        i++;
+    }
+    free(c_map);
+    c_map = NULL;
 }

@@ -6,33 +6,26 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 19:12:01 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/31 19:30:03 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:52:22 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s.h"
 
-typedef struct s_point
+void ft_ff(char **map, t_point size, t_point player)
 {
-    int x;
-    int y;
-} t_point;
-
-void ft_ff(char **grid, t_point size, t_point pos, char target)
-{
-    if(pos.y >= size.y || size.y < 0 ||pos.x >= size.x || pos.x < 0)
+    if(player.y >= size.y || size.y < 0 ||player.x >= size.x || player.x < 0)
         return;
-    if(grid[pos.y][pos.x] != target)
+    if(map[player.y][player.x] == '1' || map[player.y][player.x] == 'F')
         return ;
-    grid[pos.y][pos.x] = 'F';
+    map[player.y][player.x] = 'F';
 
-    ft_ff(grid, size, (t_point){pos.x +1, pos.y}, target);
-    ft_ff(grid, size, (t_point){pos.x-1, pos.y}, target);
-    ft_ff(grid, size, (t_point){pos.x, pos.y +1}, target);
-    ft_ff(grid, size, (t_point){pos.x, pos.y -1}, target);
+    ft_ff(map, size, (t_point){player.x +1, player.y});
+    ft_ff(map, size, (t_point){player.x-1, player.y});
+    ft_ff(map, size, (t_point){player.x, player.y +1});
+    ft_ff(map, size, (t_point){player.x, player.y -1});
  }
-void ft_floodfill(char **grid, t_point size, t_point pos)
+void ft_floodfill(char **map, t_point size, t_point player)
 {
-    char target = grid[pos.y][pos.x];
-    ft_ff(grid,size, pos, target);
+    ft_ff(map,size, player);
 }

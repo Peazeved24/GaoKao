@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 18:12:32 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/31 19:12:21 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/05 20:14:00 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int ft_countlines(int fd)
 int ft_countlines_file(char *file_name)
 {
     int fd = open(file_name, O_RDONLY);
-    if(fd < 0)
+    if(fd < 0)  
         return -1; 
     int line = ft_countlines(fd);
     close(fd);

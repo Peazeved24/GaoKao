@@ -1,14 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   src_grid2.c                                        :+:      :+:    :+:   */
+/*   parasum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/31 19:27:27 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/31 19:27:33 by peazeved         ###   ########.fr       */
+/*   Created: 2026/02/05 15:30:34 by peazeved          #+#    #+#             */
+/*   Updated: 2026/02/05 15:33:53 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "s.h"
+#include "struct.h"
 
+void ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+void ft_putnbr(int n)
+{
+    if(n >= 10)
+    {
+        ft_putnbr(n / 10);
+    }
+    ft_putchar(n % 10 + '0');
+}
+
+int main(int ac, char **av)
+{
+    (void)av;
+    ft_putnbr(ac - 1);
+    write(1, "\n", 1);
+    return 0;
+}

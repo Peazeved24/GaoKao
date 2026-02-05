@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ulst.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 18:22:21 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/05 19:52:19 by peazeved         ###   ########.fr       */
+/*   Created: 2026/02/05 15:22:59 by peazeved          #+#    #+#             */
+/*   Updated: 2026/02/05 15:26:34 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "s.h"
+#include "struct.h"
 
+int ft_upper(char c)
+{
+    return (c >= 'A' && c <= 'Z');
+}
 
-
+int ft_lower(char c)
+{
+    return (c >= 'a' && c <= 'z');
+}
 int main(int ac, char **av)
 {
-    if(ac == 1)
+    if(ac == 2)
     {
-        printf("error\n");
-        return 0;
+        int i = 0;
+        char *s = av[1];
+
+        while(s[i])
+        {
+            if(ft_lower(s[i]))
+                s[i] = s[i] - 32;
+            else if(ft_upper(s[i]))
+                s[i] = s[i] + 32;
+            write(1, &s[i++], 1);
+        }
     }
-    t_map map;
-    if(ft_fdpars(av[1], &map) || ft_alocmap(&map)|| ft_fillmap(&map, av[1]))
-    {
-        printf("Error\n");
-        ft_freemap(&map);
-        return 0;
-    }
-    if(ft_grid_parse(&map) || ft_itens_parse(&map))
-    {
-        printf("Error\n");
-        ft_freemap(&map);
-        return 0;
-    }
-    ft_printmap(&map);
-    ft_freemap(&map);
     return 0;
 }
