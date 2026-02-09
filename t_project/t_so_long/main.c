@@ -6,35 +6,50 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:21 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/05 19:52:19 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/08 17:46:33 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s.h"
+#include "mlx.h"
 
+void ft_start_mapvars(t_map *map)
+{
+    map->grid = NULL;
+    map->h = 0;
+    map->w = 0;
+    map->p = 0;
+    map->e = 0;
+    map->c = 0;
+}
+void ft_mlx_start(t_game *game)
+{
+    game->mlx= mlx_init();
+    if(!game->mlx)
+        return ;
+    game->window = mlx_new_window(game->mlx, game->map->h * 32, game->map->w * 32, "so_long");
+    mlx_loop(game->mlx);
+}
 
 
 int main(int ac, char **av)
 {
     if(ac == 1)
-    {
+    { 
         printf("error\n");
         return 0;
     }
     t_map map;
-    if(ft_fdpars(av[1], &map) || ft_alocmap(&map)|| ft_fillmap(&map, av[1]))
+    t_game game;
+    game.map = &map;
+    ft_start_mapvars(game.map);
+    if(ft_fdpars(av[1], game.map) || ft_map_parse(game.map, av[1]) || ft_grid_parse(game.map) || ft_itens_parse(game.map))
     {
         printf("Error\n");
-        ft_freemap(&map);
+        ft_freemap(game.map);
         return 0;
     }
-    if(ft_grid_parse(&map) || ft_itens_parse(&map))
-    {
-        printf("Error\n");
-        ft_freemap(&map);
-        return 0;
-    }
-    ft_printmap(&map);
-    ft_freemap(&map);
+    ft_mlx_start(&game);
+    ft_freemap(game.map);
     return 0;
 }

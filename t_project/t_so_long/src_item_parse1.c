@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   src_item_parse2.c                                  :+:      :+:    :+:   */
+/*   src_item_parse1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:15:08 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/05 18:15:24 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/08 17:29:05 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ void ft_run_itens_parse(t_map *map)
     
     i = 0;
     x = 0;
-    map->e = 0;
-    map->c = 0;
-    map->p = 0;
     while(i < map->h)
     {
         x = 0;
@@ -70,6 +67,7 @@ void ft_run_itens_parse(t_map *map)
         i++;
     }
 }
+
 int ft_count_itens(t_map *map)
 {
     ft_run_itens_parse(map);

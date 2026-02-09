@@ -333,7 +333,7 @@ MLX a seguir? kkkk
 
 -----------------  -----------------  -----------------  -----------------  -----------------
 
-Day6:   Debug day + improve
+Day6:   Debug day + modularizacao
 
     -> criacao de funcoes auxiliares extras ---- itens (chars dentro do mapa)
         -> fazer o programa entender quais saos e somente chars validos -> C, E , P , 1 ,0; ==> int ft_v_walls_roads(char c) e int ft_v_chars(char c)
@@ -374,6 +374,35 @@ Day6:   Debug day + improve
                 ft_freemap(&map);
                 return 0;
             }
+
+END OF THE DAY:
+    deleted:    notad
+	modified:   t_so_long/Makefile
+	modified:   t_so_long/README.MD
+	modified:   t_so_long/ff.c
+	renamed:    t_so_long/tinvalido.ber -> t_so_long/invalido.ber
+	modified:   t_so_long/main.c
+	new file:   t_so_long/minilibx-linux
+	modified:   t_so_long/s.h
+	modified:   t_so_long/src_fd.c
+	modified:   t_so_long/src_grid.c
+	new file:   t_so_long/src_item_parse.o
+	new file:   t_so_long/src_item_parse1.c
+	new file:   t_so_long/src_item_parse2.c
+	new file:   t_so_long/src_itenspars.o
+	modified:   t_so_long/src_map.c
+	renamed:    t_so_long/tvalido.ber -> t_so_long/valido.ber
+	new file:   ../t_rank2/day25/a.out
+	new file:   ../t_rank2/day25/ff.c
+	new file:   ../t_rank2/day25/lastword.c
+	renamed:    t_so_long/src_grid2.c -> ../t_rank2/day25/struct.h
+	new file:   ../t_rank2/day25/ulst.c
+	renamed:    t_so_long/a.out -> ../t_rank2/day26/a.out
+	new file:   ../t_rank2/day26/inter.c
+	new file:   ../t_rank2/day26/itoa.c
+	new file:   ../t_rank2/day26/parasum.c
+	new file:   ../t_rank2/day26/struct.h
+	new file:   ../t_rank2/day26/ulst.c
 MLX AMANHA?!?!?!?!!?        
 -----------------  -----------------  -----------------  -----------------  -----------------
 Day7:
@@ -384,24 +413,65 @@ Day7:
             -> textos e sprits em C etc..
 
 
+    -> ants de tudo , configurar o meu make para encontrar e linkar com a  MINILBX-LINUX;
 
-/*
-    -> criacao da FF.
-        -> check 
-    fazer uma funcao auxiliar que ajuda me a encontrar o meu P. 
-        -> check
-    > criacao de uma funcao que copia o meu mapa -> sempre usar uma copia.
-      #  usar uma copia para evitar alteracoes no mapa principal.
-        -> check
-    -> usar agora a flod fill para verificar o meu mapa -> ver
-        -> no fim do mapa processado , ver se existe algum P , E , C  restante.\
+## I- onde procurar o Header;
+## -Iminilibx-linux -- > o header esta na pasta minilibx-linux 
+##
+## -L -- onde estao as bilbiotecas.
+## -Lminilibx-linux -- as bibliotecas estao no minilibx-linux.
+## -l linkagem.
+## -lmlx -- linkagem ao MLX / -lXext -lX11 -necessarias para abrir janelas.
+## -lm - math.h ???!?!
 
+    -> apos isso criacao o mlx_start -> 
+        -> na minha struct tinha 2 var :
+            -> mlx 
+            -> window
+        ->o meu primeiro objetivo era entender como posso abrir uma janela ..
+            
+## void ft_mlx_start(void) // boot do meu jogo
+## {
+##       t_mlx mlx; // inicalizo a var da struct.
         
-    -> validar o processo todo --- para comecar a MLX.
-        -> apos o FF esta pronto -> a copia do mapa e saber onde o P esta....
-            -> saber se existe algum C / E que n consegui se trasformar em F.
-                -> se sim --- inv mpa ... se n --- valid map.
+##        mlx.mlx = mlx_init(); // needed before everything else. -- ligacao com o  server grafico.(X11)
+##        mlx.window = mlx_new_window(mlx.mlx, 800, 600, "so_long"); // janela 800x600 -> so_long -- titulo.
+##        mlx_loop(mlx.mlx);//dealing with Events -> parte mais importante. -> loop infinito -> mlx passa a chamar as funcoes sempre que algo acontece.
+##       o meu progrqma ja n controla o fluxo do programa.
+##        ex : -> close window -- chama on_destroy etc.
+##       antes do jogo iniciar -- eu controlo tudo -> depois do mlx_loop -> o sistema chama as tuas funcoes.
+##   }
+    -> isto e uma window demo -> ainda n leva em consideracao a nossa grid (map->h , map->w)...
+    -> apos a criacao de uma boa window -> que ja leva em consideracao as dimencoes do mapa;
+        -> mlx.map->w ,mlx.mpa->h.. e certo mudar (passar) o meu t_map para dentro da struct do jogo (MLX)
+            -> a idea e entender que o jogo tem um mapa , e n , o mapa e um jogo , n faz mais sentido usar daqui para a frente o t_map ...
+        -> outra razao -- nos hooks da jeito -> visto que agora tudo vive dentro do t_mlx -> basta chamar e acessar o t_map atraves do t_mlx;
 
--> y -> h -> minhas linhas verticais
--> x -> w -> minhas colunas horizontais.
-*/
+ main()
+ ├─ mlx_init() -> boot do jogo 
+ ├─ mlx_new_window() -> janela
+ ├─ mlx_key_hook() -> conjuto de eventos??
+ ├─ mlx_hook()   ← botão X 
+ ├─ mlx_loop()   ← FICA AQUI PARA SEMPRE
+
+struct -> ja alterada para so daqui para a frente usar mo t_game.
+mlx init com o map-> ja esta , ja leva em consideracao as dimencoes do nosso mapa.
+
+    render do mapa comm cores ->
+    o meu mapa e um array 2d que contem elementos (celulas): 
+        -> 1, 0, P,E,C.
+    a ideia da renderizacao e -> percorrer cada celula e desenhar na janela um retangulo de cor ou imagem.
+    pixel por tile:
+        -> o MLX n trabalha com caracteres mas sim pixels.
+            -> cada celula do mapa tem de ser trasformada e um bloco de pixeis(dai multiplicar (por ex) mlx->map->h * 32) == cada ceula sera desenaha num bloco de 32x32
+    -> draw_tile
+        -> a idea dela e percorrer o mapa e pintar tendo em consideracao a celula.
+            -> vamos utilizar macros para fazerm  associacoes de cores -> exemplo = #define C_W  0xFFFFFF 
+                # todas as cores vao vir do site https://htmlcolorcodes.com/color-picker/ !!
+    -> render_map
+carregar o XMP-> ?
+render de imagens->
+hooks do teclado->
+movimento do  player->
+fechear a janela corretamente.
+toques finais->

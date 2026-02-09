@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 19:27:27 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/05 20:21:06 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/06 19:23:41 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,12 @@ int ft_run_for_flood(char **c_map, t_map *map)
             if(c_map[i][x] == 'C' || c_map[i][x] == 'E')
             {
                 printf("F_error\n");
-                ft_printmap2(c_map);
                 return 1;   
             }
             x++;
         }
         i++;
     }
-    ft_printmap2(c_map);
     return 0;
 }
 

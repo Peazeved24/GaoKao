@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:56:44 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/04 17:09:39 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/06 18:48:47 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ int ft_linew(char *line)
     }
     return i;
 }
-int ft_map_check(t_map *map) // faltame ver o numero minimi... 3?/
+int ft_map_check(t_map *map)
 {
     if (!map || !map->grid || !map->grid[0])
         return (-1);
     map->w = ft_linew(map->grid[0]);
+    if(map->w < 3)
+        return 1;
     int j = 0;
     
     while(map->grid[j])

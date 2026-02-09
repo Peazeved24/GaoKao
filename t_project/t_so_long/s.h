@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:26 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/05 20:28:12 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/08 18:09:26 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define BUFFER  9999
 
 #endif
+#include <mlx.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -40,19 +41,30 @@ typedef struct s_point // flood_fill + posicao inicial do player.
     int y;
 } t_point;
 
+typedef struct s_game
+{
+    void *mlx;
+    void *window; // janela
+    t_map *map; // mapa agora faz PARTE do jogo.
+}t_game;
+
 //GNL
 int ft_strlen(char *str);
 void ft_shiftbuffer(char *buffer);
 char	*ft_strjoin(char *s1, char *s2);
 char *get_next_line(int fd);
+//-----------------------------
 //FD-PROC.
 int ft_countlines(int fd);
 int ft_countlines_file(char *fd_name);
 int ft_fdpars(char *file_name,t_map *map);
+int ft_strlen2(char *s);
+int ft_fdname_parse(char *file_name);
+//-----------------------------
 //MAP-proc 
+int ft_map_parse(t_map *map, char *file_name);
 int ft_alocmap(t_map *map); // cria a matriz
-int ft_fillmap(t_map *map, char *file_name); // prenche ela.
-void ft_printmap(t_map *map); // debug
+int ft_fillmap(t_map *map, char *file_name);
 void ft_freemap(t_map *map);
 void ft_freemapcopy(char **c_map, int h);
 //-----------------------------
@@ -75,5 +87,7 @@ char **ft_mapcopy(t_map *map);
 int ft_run_for_flood(char **c_map, t_map *map);
 int ft_mapflood(t_map *map);
 int ft_itens_parse(t_map *map);
+//-----------------------------
+//MLX + TILES etc
 
 #endif
