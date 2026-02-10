@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:26 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/08 18:09:26 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/10 19:17:03 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,22 @@
 #define BUFFER  9999
 
 #endif
+
+#ifndef TILE_SIZE
+#define TILE_SIZE 32
+#endif
+
 #include <mlx.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+typedef struct s_point // flood_fill + posicao inicial do player.
+{
+    int x;
+    int y;
+} t_point;
 
 typedef struct s_map
 {
@@ -32,14 +43,8 @@ typedef struct s_map
     int p;
     int e;
     int c;
-    int x;
+    t_point player;
 }   t_map;
-
-typedef struct s_point // flood_fill + posicao inicial do player.
-{
-    int x;
-    int y;
-} t_point;
 
 typedef struct s_game
 {
@@ -88,6 +93,7 @@ int ft_run_for_flood(char **c_map, t_map *map);
 int ft_mapflood(t_map *map);
 int ft_itens_parse(t_map *map);
 //-----------------------------
-//MLX + TILES etc
-
+//MLX + TILES+HOOKS
+void ft_draw_tiles(t_game *game ,int y, int x, int color);
+void ft_map_fill_tiles(t_game *game);
 #endif

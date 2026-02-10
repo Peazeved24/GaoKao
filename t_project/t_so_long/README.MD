@@ -405,7 +405,7 @@ END OF THE DAY:
 	new file:   ../t_rank2/day26/ulst.c
 MLX AMANHA?!?!?!?!!?        
 -----------------  -----------------  -----------------  -----------------  -----------------
-Day7:
+Day7, 8, 9:
        MLX:
         -> uma biblioteca grafica criada pela 42 que fornece:
             -> criacao de janelas;
@@ -469,9 +469,56 @@ mlx init com o map-> ja esta , ja leva em consideracao as dimencoes do nosso map
             -> vamos utilizar macros para fazerm  associacoes de cores -> exemplo = #define C_W  0xFFFFFF 
                 # todas as cores vao vir do site https://htmlcolorcodes.com/color-picker/ !!
     -> render_map
+
+TILES-> e a representacao das minhas celulas da minha grid -> no mapa!
+    -> mapa ja carrega e aparece com cores.
+    -> gracas a ft do mlx -> mlx_pixel_put -> consigo saber criar uma tile 32x32 e com cores !
+    -> percorre o mapa -> void ft_map_fill_tiles(t_game *game)
+    -> entende qual e o char encontrado nas celulas + pinta as msm :
+        -> void ft_fill_char(t_game *game , char c, int y, int x) + void ft_draw_tiles(t_game *game ,int y, int x, int color)
+
+hooks do teclado->
+
+    -> hooks -> 
+        -> a ideia de um hook e registrar eventos
+            -> sempre que x acontecer --- faz isto...
+            -> ou seja , o mlx_loop e o motor do jogo e quando algo acontece, mlx aciona um hook.
+        -> o mlx_key_hook -> eventos -- de teclas precionadas.
+            -> quando qualquer tecla for aciona , chama x funcao
+        -> o mlx_hook e o "pai" de todos os hooks;
+            -> mlx_key_hook ->> somente para KeyPress.
+    -> parte da movimentacoa!
+            -> o key_hook ->chama uma funcao responsavel pela a motivacao.
+                -> calcular o movimento , atualizar a grid, e redesenhar o mapa.
+
+    -> movimentacao e feita na grid ...
+        -> 4 pontos da movimentacao:
+            -> onde esta o player.
+            -> para onde ele quer ir
+            -> e possivel ir /entrar 
+            -> atualizar.
+        -> se o player comeca num ponto na grid[x][y];
+            -> logo movimentar na grid e levar em consideracao as 
+            cordenadas (x+1, x-1, y+1, y-1);
+                -> W =  y-1 .  S = y+1... etc.
+        -> importante guardar as cordenadas inicias do player na struct apartir de agora.
+        -> entender o q e valido ou n?:
+        ## -> 1 == parede -- return;
+        ## -> C == colecta ate chegar a 0 == condicao de vitoria -> collectable--.
+        ## -> 0 == anda!??
+        ## -> E == somente quando collectable for == 0;
+        -> movimentos alteram a grid -- se  no inicio tinha |P|0| == |0|P|;
+
+
+
 carregar o XMP-> ?
+
 render de imagens->
 hooks do teclado->
 movimento do  player->
 fechear a janela corretamente.
 toques finais->
+
+h = x = r;
+w = y = c;
+

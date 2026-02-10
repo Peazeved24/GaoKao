@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:21 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/08 17:46:33 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/09 19:02:11 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void ft_mlx_start(t_game *game)
     game->mlx= mlx_init();
     if(!game->mlx)
         return ;
-    game->window = mlx_new_window(game->mlx, game->map->h * 32, game->map->w * 32, "so_long");
+    game->window = mlx_new_window(game->mlx, game->map->w * TILE_SIZE, game->map->h * TILE_SIZE, "so_long");
+    ft_map_fill_tiles(game);
     mlx_loop(game->mlx);
 }
-
 
 int main(int ac, char **av)
 {

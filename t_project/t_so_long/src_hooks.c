@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   src_game.c                                         :+:      :+:    :+:   */
+/*   src_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 18:01:19 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/09 15:51:06 by peazeved         ###   ########.fr       */
+/*   Created: 2026/02/10 18:34:21 by peazeved          #+#    #+#             */
+/*   Updated: 2026/02/10 21:29:15 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s.h"
 #include "mlx.h"
-#include "colors.h"
+#include "colorkey.h"
 
 
-void ft_tiles_draw(int col, int row, int color)
+void ft_player_move(t_map *map, int key)
 {
-    t_map map;
+    int r; // h
+    int c; // w
     
-    int x; // h
-    int y; // w
-    int r; // ->h
-    int c; // c ->w
-
-    x = 0;
-    y = 0;
     r = 0;
     c = 0;
-    while(y < map->w)
+    map->player = ft_findplayer(map);
+    if(map->player.x == -1)
+        return 1;
+    
+        
 }

@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.h                                           :+:      :+:    :+:   */
+/*   stc.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 18:09:31 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/08 18:18:08 by peazeved         ###   ########.fr       */
+/*   Created: 2026/02/09 15:58:11 by peazeved          #+#    #+#             */
+/*   Updated: 2026/02/09 16:01:29 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "struct.h"
 
-#define COLORS_H
-#ifndef COLORS_H
+int main(int ac, char **av)
+{
+    if(ac == 2)
+    {
+        int i = 0;
+        char *s1 =av[1];
 
-
-#define C_1 0x750017 // walls
-#define C_0 0x1500FF // floors
-#define C_P 0x0C7500 // player
-#define C_C 0xF2FF00 // collect
-#define C_E 0xFF0000 // exit
-
-#endif
+        if(s1[0] == '_')
+            return 0;
+        while(s1[i])
+        {
+            if(s1[i] == '_')
+            {
+                i++;
+                s1[i] = s1[i] - 32;
+            }
+            write(1, &s1[i++], 1);
+        }
+    }
+    return 0;
+}
