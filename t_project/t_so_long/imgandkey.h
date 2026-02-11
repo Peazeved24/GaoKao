@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colorkey.h                                         :+:      :+:    :+:   */
+/*   imgandkey.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:09:31 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/10 19:19:38 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:35:49 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef COLORKEY_H
-#define COLORKEY_H
+#ifndef IMGANDKEY_H
+#define IMGANDKEY_H
 
-//COLORS 
-#define C_1 0x750017 // walls
-#define C_0 0x1500FF // floors
-#define C_P 0x0C7500 // player
-#define C_C 0xF2FF00 // collect
-#define C_E 0xFF0000 // exit
+//img
+#define IMG_WALL "img/wall.xpm"
+#define IMG_FLOOR "img/floor.xpm"
+#define IMG_PLAYER "img/player.xpm"
+#define IMG_COLLECT "img/collect.xpm"
+#define IMG_EXIT "img/exit.xpm"
+
 //KEY
 #define K_W 119// key_code
 #define K_A 97 

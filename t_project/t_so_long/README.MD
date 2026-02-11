@@ -510,6 +510,22 @@ hooks do teclado->
         -> movimentos alteram a grid -- se  no inicio tinha |P|0| == |0|P|;
 
 
+/*
+    movimentacao:
+        -> entender as dimensoes na grid;
+            -> cima (w) = y-1
+            -> baixo (s) = y+1 etc....
+        -> limites !
+            -> pode ate tentar sair ,mas tem de haver limites.
+                -> FF.
+        -> target ! -> coletar objetos , quando pode sair etc.
+
+        -> atualizacao do mapa.
+            -> atualizar a posicao antiga por 0.
+            -> atualizar para as novas pos -> player.y = p_y (calculo feito pelo o move)
+            -> entneder que apos o movimento == P.
+            |P|0| == |0|P| 
+*/
 
 carregar o XMP-> ?
 

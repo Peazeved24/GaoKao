@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:26 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/11 15:27:07 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/11 21:04:48 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,23 @@ typedef struct s_point // flood_fill + posicao inicial do player.
     int y;
 } t_point;
 
+typedef struct s_img
+{
+    void *floor;
+    void *player;
+    void *collect;
+    void *wall;
+    void *exit;
+    int h;
+    int w;
+}t_img;
+
+
 typedef struct s_map
 {
-    char **grid; // mapa
-    int h; // LINHAS
-    int w; // COLUNAS
+    char **grid;
+    int h;
+    int w;
     int p;
     int e;
     int c;
@@ -52,6 +64,7 @@ typedef struct s_game
     void *window; // janela
     t_map *map; // mapa agora faz PARTE do jogo.
     int key;
+    t_img img; // imagens !
 }   t_game;
 
 //GNL
@@ -94,9 +107,9 @@ int ft_run_for_flood(char **c_map, t_map *map);
 int ft_mapflood(t_map *map);
 int ft_itens_parse(t_map *map);
 //-----------------------------
-//MLX + TILES+HOOKS
-void ft_draw_tiles(t_game *game ,int y, int x, int color);
-void ft_map_fill_tiles(t_game *game);
-void ft_move_player(t_game *game, int key);
-int ft_hooks(int key , t_game *game);
+//MLX+TILES+HOOKS+IMG
+void ft_render_map(t_game *game);
+void ft_move_player(t_map *map, int key);
+int ft_hooks(int key ,t_game *game);
+void ft_load_img(t_game *game);
 #endif

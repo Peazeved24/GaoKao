@@ -6,12 +6,11 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:09:17 by peazeved          #+#    #+#             */
-/*   Updated: 2026/01/26 18:53:51 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:31:21 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s.h"
-
 
 int ft_strlen(char *str) // len da linha mais o \n
 {
