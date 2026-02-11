@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:01:19 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/11 21:05:39 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/11 22:15:00 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 #include "mlx.h"
 #include "imgandkey.h"
 
+
 void ft_load_img(t_game *game)
 {
-    game->img.wall = mlx_xpm_file_to_image(game->mlx, IMG_WALL, &game->img.h, &game->img.w);
-    game->img.player = mlx_xpm_file_to_image(game->mlx, IMG_PLAYER, &game->img.h, &game->img.w);
-    game->img.exit = mlx_xpm_file_to_image(game->mlx, IMG_EXIT, &game->img.h, &game->img.w);
-    game->img.collect = mlx_xpm_file_to_image(game->mlx, IMG_COLLECT, &game->img.h, &game->img.w);
-    game->img.floor = mlx_xpm_file_to_image(game->mlx, IMG_FLOOR, &game->img.h, &game->img.w);
+     game->img.wall = mlx_xpm_file_to_image(
+        game->mlx, IMG_WALL, &game->img.w, &game->img.h);
+    game->img.player = mlx_xpm_file_to_image(
+        game->mlx, IMG_PLAYER, &game->img.w, &game->img.h);
+    game->img.exit = mlx_xpm_file_to_image(
+        game->mlx, IMG_EXIT, &game->img.w, &game->img.h);
+    game->img.collect = mlx_xpm_file_to_image(
+        game->mlx, IMG_COLLECT, &game->img.w, &game->img.h);
+    game->img.floor = mlx_xpm_file_to_image(
+        game->mlx, IMG_FLOOR, &game->img.w, &game->img.h);
 }
 //void ft_draw_tiles(t_game *game ,int y, int x, int color)
 
@@ -39,7 +45,7 @@ void ft_render_map(t_game *game)
     c = 0;
     y = 0;
     x = 0;
-    img = 0;
+    img = 0;    
     while(r < game->map->h)
     {
         c = 0;
