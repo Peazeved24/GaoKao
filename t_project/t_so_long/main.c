@@ -6,12 +6,13 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:21 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/09 19:02:11 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/11 14:11:47 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s.h"
 #include "mlx.h"
+#include "colorkey.h"
 
 void ft_start_mapvars(t_map *map)
 {
@@ -24,11 +25,12 @@ void ft_start_mapvars(t_map *map)
 }
 void ft_mlx_start(t_game *game)
 {
-    game->mlx= mlx_init();
+    game->mlx = mlx_init();
+     
     if(!game->mlx)
         return ;
     game->window = mlx_new_window(game->mlx, game->map->w * TILE_SIZE, game->map->h * TILE_SIZE, "so_long");
-    ft_map_fill_tiles(game);
+    mlx_key_hook(game->window, ft_hooks, game);
     mlx_loop(game->mlx);
 }
 

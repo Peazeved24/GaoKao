@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:22:26 by peazeved          #+#    #+#             */
-/*   Updated: 2026/02/10 19:17:03 by peazeved         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:27:07 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ typedef struct s_game
     void *mlx;
     void *window; // janela
     t_map *map; // mapa agora faz PARTE do jogo.
-}t_game;
+    int key;
+}   t_game;
 
 //GNL
 int ft_strlen(char *str);
@@ -96,4 +97,6 @@ int ft_itens_parse(t_map *map);
 //MLX + TILES+HOOKS
 void ft_draw_tiles(t_game *game ,int y, int x, int color);
 void ft_map_fill_tiles(t_game *game);
+void ft_move_player(t_game *game, int key);
+int ft_hooks(int key , t_game *game);
 #endif
